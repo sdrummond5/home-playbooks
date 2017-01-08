@@ -10,7 +10,11 @@
   - name: ensure named is at the latest version
     yum: name=bind state=latest
   - name: write the named config file
-    template: src=src/bind.j2 dest=/tmp/bind.conf-test
+    template: src=src/named.conf.j2 dest=/etc/named.conf
+    notify:
+    - restart named
+  - name: configure zone for drumm.one
+    template: src=src/drumm.one.zone.j2 dest=/var/named/drumm.one.zone
     notify:
     - restart named
   - name: ensure named is running (and enable it at boot)

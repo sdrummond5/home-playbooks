@@ -1,0 +1,17 @@
+$TTL 86400
+@   IN  SOA     dns.drumm.one. root.drumm.one. (
+        2013042201  ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800      ;Expire
+        86400       ;Minimum TTL
+)
+; Specify our two nameservers
+		IN	NS		dns.drumm.one.
+dns	A	192.168.4.1
+; Resolve nameserver hostnames to IP, replace with your two droplet IP addresses.
+dns		IN	A		192.168.4.1
+blade1		IN	A		192.168.2.1
+
+; Define hostname -> IP pairs which you wish to resolve
+;www             IN      CNAME           dns
