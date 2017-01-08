@@ -45,5 +45,11 @@ zone "drumm.one" IN {
         allow-update { none; };
 };
 
+zone "4.168.192.in-addr.arpa" IN {
+  type master;
+  file "drumm.one.rr.zone";
+  allow-update { none; };
+};
+
 include "/etc/named.rfc1912.zones";
 include "/etc/named.root.key";

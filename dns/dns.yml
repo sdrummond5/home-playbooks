@@ -17,6 +17,10 @@
     template: src=src/drumm.one.zone.j2 dest=/var/named/drumm.one.zone
     notify:
     - restart named
+  - name: configure rr for drumm.one
+    template: src=src/drumm.one.rr.zone.j2 dest=/var/named/drumm.one.rr.zone
+    notify:
+    - restart named
   - name: ensure named is running (and enable it at boot)
     service: name=named state=started enabled=yes
   handlers:
