@@ -1,0 +1,20 @@
+---
+- hosts: all
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  tasks:
+  - name: ensure libselinux-python is at the latest version
+    yum: name=libselinux-python state=latest
+  - name: ensure named is at the latest version
+    yum: name=bind state=latest
+  - name: write the named config file
+    template: src=src/bind.j2 dest=/tmp/bind.conf-test
+    notify:
+    - restart named
+  - name: ensure named is running (and enable it at boot)
+    service: name=named state=started enabled=yes
+  handlers:
+    - name: restart named
+      service: name=named state=restarted
