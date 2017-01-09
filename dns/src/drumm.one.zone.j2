@@ -8,9 +8,15 @@ $TTL 86400
 )
 ; Specify our two nameservers
 		IN	NS		ns1.drumm.one.
-dns	A	192.168.4.1
+                IN      NS              ns2.drumm.one.
 ; Resolve nameserver hostnames to IP, replace with your two droplet IP addresses.
 ns1		IN	A		192.168.4.1
+ns2             IN      A               192.168.4.2
+haproxy1a       IN      A               192.168.4.3
+haproxy1b       IN      A               192.168.4.4
+web1            IN      A               192.168.4.20
+web2            IN      A               192.168.4.21
+web3            IN      A               192.168.4.22
 blade1		IN	A		192.168.2.1
 
 ; Define hostname -> IP pairs which you wish to resolve
